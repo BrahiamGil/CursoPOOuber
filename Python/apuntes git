@@ -1,0 +1,239 @@
+COMANDOS BÁSICOS
+git init: crear un repositorio.
+git add: agregar un archivo a staging.
+git commit -m “mensaje”: guardar el archivo en git con un mensaje.
+git branch : crear una nueva rama.
+git checkout: moverse entre ramas.
+git push: mandar cambios a un servidor remoto.
+git fetch: traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local.
+git merge: tiene dos usos. Uno es la fusión de ramas, funcionando como un commit en la rama actual, trayendose la rama indicada. El otro uso es guardar los cambios de un servidor remoto en nuestro directorio.
+git pull: fetch y merge al mismo tiempo.
+
+COMANDOS PARA VOLVER O CORREGIR
+git checkout “codigo de version” “nombre del archivo”: volver a la ultima version commiteada.
+git reset: vuelve al pasado sin posibilidad de volver al futuro, se debe usar con especificaciones.
+git reset --soft vuelve a la versión en el repositorio pero guarda los cambios en staging, así podemos aplicar actualizaciones a un nuevo commit.
+git reset --hard TODO VUELVE A LA VERSIÓN ANTERIOR
+git reset HEAD saca los cambios de staging pero no los borra, es lo opuesto a git add.
+git rm: elimina los archivos pero no su historial, si queremos recuperar algo solo hay que regresar, se usa así:
+git rm --cached elimina los archivos en staging pero los mantiene en el disco duro.
+git rm --force elimina los archivos de git y del disco duro.
+
+COMANDO PARA REVISAR Y COMPARAR
+git status: estado de archivos en el repositorio.
+git log: historia entera del archivo.
+git log --stat: cambios específicos en el archivo a partir de un commit.
+git show: cambios históricos y específicos hechos en un archivo.
+git diff “codigo de version 1” “codigo de version 2”: comparar cambios entre versiones.
+git diff: comparar directorio con staging.
+
+COMANDOS GIT
+
+- git init: Crea un nuevo repositorio Git.
+- git clone: Crea una copia de un repositorio remoto en tu máquina local.
+- git add: Agrega cambios a un archivo o archivos para ser incluidos en el siguiente commit.
+- git commit: Crea un nuevo commit con los cambios agregados previamente.
+- git status: Muestra el estado actual del repositorio, incluyendo los archivos modificados, agregados o eliminados.
+- git diff: Muestra las diferencias entre los cambios realizados en los archivos desde el último commit.
+- git pull: Obtiene los cambios más recientes desde un repositorio remoto y los fusiona con la rama actual.
+- git push: Sube los cambios locales a un repositorio remoto.
+- git branch: Muestra las ramas disponibles y permite crear, eliminar o cambiar entre ellas.
+- git checkout: Cambia entre ramas o versiones de un archivo específico.
+- git merge: Fusiona cambios de dos o más ramas.
+- git remote: Muestra los repositorios remotos gconectados a tu repositorio local.
+- git log: Muestra un registro de los commits realizados en el repositorio.
+- git tag: Crea, lista o elimina etiquetas en el repositorio.
+- git reset: Permite deshacer cambios en un archivo o un commit específico.
+- git stash: Guarda temporalmente los cambios sin realizar un commit completo.
+- git rebase: Permite modificar la historia de un repositorio cambiando el orden o los detalles de los commits.
+- git config: Configura opciones de Git, como nombre de usuario, correo electrónico o alias de comandos.
+- git rm: Elimina archivos del repositorio y del sistema de archivos local.
+- git rm --cached: Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro disco duro.
+- git rm --force: Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder
+- git show “nombre del archivo” = Nos permite poder mirar la ultima modificacion que se la ha realizado al archivo
+- git rm --cached “nobre del archivo” = Nos permite remover el archivo de la ubicacion en memoria en la que
+
+El flujo general de Gitflow es el siguiente:
+
+Se crea una rama develop a partir de main.
+Se crea una rama release a partir de la develop.
+Se crean ramas feature a partir de la develop.
+Cuando se termina una rama feature, se fusiona en la rama develop.
+Cuando la rama release está lista, se fusiona en las ramas develop y main.
+Si se detecta un problema en main, se crea una rama hotfix a partir de main.
+Una vez terminada la rama hotfix, esta se fusiona tanto en develop como en main.
+
+Terminal linux
+
+mkdir miDirectorio: es para crear un directorio
+touch miArchivo: es para crear archivo desde la terminal
+cp file1 file_bk: es para copiar un archivo
+mv file_bk .. : es para mover atrás el archivo
+mv file_bk fileCopy: es para renombrar el archivos
+rm -i filecopy: sirve para borrar el archivo
+rm -ri miDirectorio: es para eliminar directorios con archivos
+head principios_de_usabilidad.md: nos va mostrar las primeras 10 lineas de un archivo de texto
+tail principios_de_usabilidad.md: nos va mostrar las ultimas 10 lineas
+less principios_de_usabilidad.md: es un comando mas avanzado que nos deja hasta buscar
+open principios_de_usabilidad.md: para abrir un archivo
+xdg-open principios_de_usabilidad.md: para abrir con linux
+nautilus Documentos/Dev: sirve para abrir carpetas
+alias l="ls -lh": es para crear un alias
+help cd:es para pedir ayuda
+man cd: es el manual de usuario de un comando
+info cd: es igual a un manual solo mas resumida
+whatis cd: es un comando para pedir ayuda pero mas corto
+ls *.txt: nos muestra todo los archivos txt
+ls datos*: nos encuntra todo los nombres que coloquemos antes del asterisco
+ls datos?: solo encontra al que tenga el mismo nombre pero solo con un caracter despues
+ls datos???: encuentra los que tenga 3 caracteres
+ls *.html: va encontrar todo los archivos que sean html
+ls [[:upper:]]*: este sirve para mostrar carpetas o archivos que inicien por mayusculas y termine con minuscula o mayuscula
+ls -d [[:upper:]]*:para solo buscar las carpetas que inicie con mayuscula
+ls -d [[:lowe:]]*: para encontrar las que empiezan por minuscula
+ls [ad]*: agregando cualquier palabra nos buscara toda carpeta similar
+*	Busca todo
+?	Busca por cantidad de caracteres
+[]	Busca por caracteres específicos
+echo "Hola platzi": imprime
+cat error.txt: sirve para contatenar los archivos
+ls -lh | less:
+ls -lh | tee output.txt | less
+cowsay "Hola amigos": nos muestra una vaca con el texto
+-Comandos separados por punto y coma “;” : Se ejecutan uno seguido del otro en el orden en que fueron puesto.
+Uno no se ejecuta hasta que el otro proceso aya terminado.
+-Comandos separados por & : Se ejecutan todos al mismo tiempo,
+es decir de forma asíncrona.
+-Comandos separados por && : Se ejecutan solo si el comando anterior se aya ejecutado exitosamente.
+Suponemos que A, B y C son comando:
+A && B && C El B solo se va ejecutar si el A se ejecuta exitosamente,
+y el C solo se va ejecutar si el B si ejecuta exitosamente. Si el B no se ejecuta exitosamenta el C no se ejecuta. Si el A no se ejecuta exitomante el B y el C no se ejecutan.
+-Comandos separados por || : Solo se ejecuta uno. Sea cuantos comandos tienes separados por || solo ejecuta o toma en cuenta el primer que se ejecuta exitosamente (bajo la redundacia), y descarta automaticamente los demas. Cuando uno de los comandos se ejecuta exitosamente, descarta los demas comandos.
+
+Tipos de archivos
+- Un archivo normal
+d Un directorio
+l Un link simbolico
+b Un archivo de bloqueo especial. Son archivos que manejan la informacion de los bloqueos de datos como una usb
+
+Tipo de modo
+Dueño - rwx - 1 1 1 = 7
+Grupo - r-x - 1 0 1 = 5
+World - r-x - 1 0 1 = 5
+
+Mod simbólico
+u: Solo para el usuario
+g Solo para el grupo
+o: Solo para otros (es el world).
+a: Aplica para todos
+su root: en windows es sudo su
+
+ln -s: Hace referencia a un lugar
+printenv: nos lleva a todas las variables de entorno que tenemos configuradas
+echo $Home: para imprimir donde esta la variable de entorno
+echo $PATH, os muestra donde esta
+code .bashrc: para abrir el visual
+which code: nos sirve para bucar donde esta
+find ./ -name file :nos ayuda a buscar un archivo
+find./ -name *.txt|
+find ./ -type f: o d para buscar directorios buscarlo por tipos
+find ./ -type f -name *.log
+find ./ -size 20M: va buscar archivos por sus peso
+
+grep: sirve para encontar coincidencia
+wc movies.csv: sirve para contar cuantas palabras hay
+
+utilidades de la red
+ifconfig: nos muestra informacion de nuestra red
+ping www.google.com : nos muestra si una pagina esta activa
+curl www.google.com:nos trae un archivo
+wget www.google.com: Trae desde internet y lo guarda
+traceroute www.google.com: nos dice por todas la computadoras que vamos a pasar cuando vamos a entrar
+netstat -i: nos muestra los dispositivos de red
+tar -cvf Tocompress.tar ToCompress: Sirve para comprimir archivos
+tar -cvzf ToCompress.tar.gz ToCompress: Sirve para comprimir y es mas eficiente
+tar -xzvf Tocompress.tar: para descomprimir archivo zip
+apt : para ver bibliotecas
+zip -r ToCompressInZip.zip ToCompress: descomprimit
+unzip TocompressInZip.zip: para descomprimir
+ps: para mirar que proceso estan corriendo
+kill 267: para que no siga corriendo
+top: nos muestra cual de los procedimientos nos esta cosumiendo mas
+
+Procesos en foreground y background
+¿Cómo manejar procesos?
+Diferencia entre Ctrl + C y Ctrl + Z
+Ctrl + C Lo que hace es que finaliza o mata un proceso.
+Ctrl + Z Lo que hace es que pausa o suspende un proceso con lo que después lo podremos volver a llamar con el comando fg foreground (primer plano)
+o con el comando bg background (segundo plano)
+Y un ejemplo muy sencillo que les servirá para controlar procesos es el siguiente:
+.
+Crear un listado recursivo (Que liste todos los archivos y directorios)
+Para eso seguimos los sigueintes pasos:
+1.- Primero hacemos el comando cd / para dirigirnos a la raíz de nuestro sistema.
+2.- Después ejecutamos el comando ls -R y comenzará a listar TODO lo que existe dentro de nuestro S.O.
+3.- Ahora lo que hacermos será confirmar lo aprendido, utilizamos Ctrl + C y veremos que se cancela el proceso,
+ero lo interesante viene cuando hacemos lo siguiente 😄
+4.- Ahora ejecutamos el mismo comando para listar TODO, ls -R y lo detenemos con Ctrl + Z a lo que nos saldrá lo siguiente: [Número del proceso]
+ + Id del proceso + En donde se detuvo el proceso
+Y se verá algo como esto: [1] + 40751 suspended (signal) ls --color=tty -R
+Y repetiremos el paso 4 otras 3 veces (Ustedes confíen 😄)
+Ahora si ejecutamos el comando jobs nos mostrará todos los procesos suspendidos y si tenemos ejecutando alguno en segundo plano.
+Imgur
+Para volver a activar algún proceso podemos hacerlo con el comando fg %Número del proceso
+Por ejemplo en bash con fg %1 y en zsh con fg %1 para volver a correr el primer proceso que suspendimos, y ahora le damos Crl + C para ahora
+sí matarlo, ahora el proceso 1 ya no existirá al ejecutar jobs pero el 2, 3 y 4 ahí seguirán 😄
+Esto es muy importante para cuando queremos manejar diferentes procesos, por ejemplo con el comando sleep 10000 & podrá un proceso en segundo plano,
+entonces no lo podremos ver, pero nos marca el Número del proceso entre los [] también lo podemos ver con jobs junto con su número de proceso,
+si lo queremos traer a primer plano lo podemos hacer con el comando fg %1 por ejemplo y de ahí ya cancelarlo o suspenderlo, o una manera más rápida,
+solo ejecutar el comando kill %Número del proceso por ejemplo: con el mismo ejemplo de sleep 10000 & si nos da el [1] lo podremos terminar con kill
+1 o kill %1 y nos saldrá algo como [1] + 41723 terminated sleep 10000 y ahora ya saber como manejar y exterminar todos los procesos
+como terminator 🤖
+.
+.
+Diferencia entre Ctrl + L y clear
+Ctrl + L Lo que hace es que manda para arriba lo que está impreso en la terminal, dejándola a simple vista limpia, pero en realidad lo puedes
+regresar a eso que esta impreso ahí.
+clear Lo que hace es que limpia la terminal, y todo lo que estaba impreso en la terminal.
+
+Editore de texto en la terminal
+hay dos terminales para escribir en la terminal que son vim vi
+para salir de allí hay que darle :q
+sudo apt install tilix
+
+Orientacion a objetos: POO
+Paradigma: Es la teoría que suministra la base y modelo para resolver problemas
+
+UML
+
+Estos son los niveles de visibilidad que puedes tener:
+
+- private
++ public
+# protected
+~ default
+
+Asociación
+Como su nombre lo dice, notarás que cada vez que esté referenciada este tipo
+de flecha significará que ese elemento contiene al otro en su definición.
+La flecha apuntará hacia la dependencia.
+Con esto vemos que la ClaseA está asociada y depende de la ClaseB.
+
+Herencia
+Siempre que veamos este tipo de flecha se estará expresando la herencia.
+La dirección de la flecha irá desde el hijo hasta el padre.
+Con esto vemos que la ClaseB hereda de la ClaseA
+
+Agregación
+
+Este se parece a la asociación en que un elemento dependerá del otro, pero en este caso será:
+Un elemento dependerá de muchos otros. Aquí tomamos como referencia la multiplicidad del elemento.
+Lo que comúnmente conocerías en Bases de Datos como Relaciones uno a muchos.
+Con esto decimos que la ClaseA contiene varios elementos de la ClaseB.
+Estos últimos son comúnmente representados con listas o colecciones de datos
+
+Composición
+Este es similar al anterior solo que su relación es totalmente compenetrada de tal modo que conceptualmente una de estas
+clases no podría vivir si no existiera la otra.
+Con esto terminamos nuestro primer módulo. Vamos al siguiente para entender cómo podemos hacer
+ un análisis y utilizar estos elementos para construir nuestro diagrama de clases de Uber.
